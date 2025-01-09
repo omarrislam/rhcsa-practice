@@ -98,5 +98,90 @@ This project covers the steps for practicing key RHCSA concepts and commands on 
      enabled=1
      gpgcheck=0
      ```
+---
 
+# Step 5: Process and System Monitoring
+
+## Objective
+In this step, we aim to implement system monitoring tools and create automated tasks to ensure the system is operating efficiently. This includes monitoring processes, system resources, and scheduling jobs for resource reporting.
+
+### Tasks Covered
+- **Monitoring Running Processes**: Using `top`, `ps` to monitor system processes and resource usage.
+- **Scheduling Jobs**: Using `cron` to schedule periodic tasks that generate resource usage reports.
+- **Script Creation**: Automating resource reporting using a script.
+- **System Logs**: Configuring log files to record the outputs of system monitoring.
+
+## Deliverables
+
+### 1. **Process Monitoring**
+We used the following tools to monitor system processes:
+- **`top`**: Provides an interactive view of system processes.
+- **`ps`**: Displays a snapshot of the running processes.
+
+#### Example Commands:
+```bash
+# Monitor real-time processes
+top
+
+# Snapshot of processes with detailed information
+ps aux
+
+```
+
+### 2. **Automated Resource Reporting Script**
+We wrote a script that generates a report on system resource usage and logs it to a file.
+
+**Script**: `resource_report.sh`
+```bash
+# Get system resource usage and save to a file
+echo "CPU and Memory Usage:" >> /root/rhcsa-practice/logs/resource_report.txt
+top -n 1 -b >> /root/rhcsa-practice/logs/resource_report.txt
+
+echo "Disk Usage:" >> /root/rhcsa-practice/logs/resource_report.txt
+df -h >> /root/rhcsa-practice/logs/resource_report.txt
+
+echo "Network Statistics:" >> /root/rhcsa-practice/logs/resource_report.txt
+netstat -i >> /root/rhcsa-practice/logs/resource_report.txt
+
+```
+
+The script collects details about the system’s:
+- CPU usage
+- Memory usage
+- Disk space usage
+- Network Statistics
+
+### 3. **Scheduling the Report Generation**
+To ensure that the resource report is generated periodically, we scheduled the script to run every day at midnight using `cron`.
+
+#### Cron Job Entry:
+To schedule the script, edit the crontab by running:
+```bash
+crontab -e
+```
+
+Add the following entry to run the report script at every min:
+```
+* * * * * /path/to/resource_report.sh
+```
+
+This will ensure that a new report is generated daily and stored in `/root/rhcsa-practice/logs/resource_report.txt`.
+
+### 4. **Logs**
+- **Log File**: `/root/rhcsa-practice/logs/resource_report.txt`
+- **Purpose**: Contains the outputs of the resource reporting script, including memory, disk usage, and CPU statistics.
+  
+#### Example of log output:
+```
+System Resource Report - Wed Jan  7 00:00:00 UTC 2025
+-------------------------------------
+top - 00:00:00 up 1 day,  5:43,  1 user,  load average: 0.02, 0.01, 0.05
+Tasks: 149 total,   1 running, 148 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  3.5 us,  1.2 sy,  0.0 ni, 95.1 id,  0.1 wa,  0.0 hi,  0.1 si,  0.0 st
+MiB Mem :   8096.8 total,   2052.6 free,   3257.6 used,   2786.6 buff/cache
+MiB Swap:   4096.0 total,   4096.0 free,      0.0 used.   4384.3 avail Mem
+```
+
+
+---
 
