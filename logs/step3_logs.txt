@@ -1,0 +1,6 @@
+ls -ld /shared/developers
+drwxrws--T. 5 root developers 150 Jan  8 18:01 /shared/developers
+
+
+cat /root/rhcsa-practice/logs/backup.log
+backup completed at Wed Jan  8 06:08:59 PM EET 2025

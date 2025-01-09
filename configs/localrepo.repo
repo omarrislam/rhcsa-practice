@@ -1,0 +1,6 @@
+[localrepo]
+name=Local Repository
+baseurl=file:///media/isolinux
+enabled=1
+gpgcheck=0
+

@@ -1,0 +1,32 @@
+Output for the Following commands:
+
+hostnamectl 
+Static hostname: server.omar.com
+       Icon name: computer-vm
+         Chassis: vm 🖴
+      Machine ID: c48e23063e0e44e6905787078ea1fba4
+         Boot ID: 2ec3fbb3a1b34d5594ca13c779a9a996
+  Virtualization: vmware
+Operating System: CentOS Stream 9
+     CPE OS Name: cpe:/o:centos:centos:9
+          Kernel: Linux 5.14.0-479.el9.x86_64
+    Architecture: x86-64
+ Hardware Vendor: VMware, Inc.
+  Hardware Model: VMware Virtual Platform
+Firmware Version: 6.00
+
+timedatectl
+               Local time: Wed 2025-01-08 15:22:15 EET
+           Universal time: Wed 2025-01-08 13:22:15 UTC
+                 RTC time: Wed 2025-01-08 13:22:15
+                Time zone: Africa/Cairo (EET, +0200)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+
+nmcli conn show
+NAME           UUID                                  TYPE      DEVICE
+ens33          edf7bec7-8599-3610-8d03-0cd2a44bab03  ethernet  ens33
+static1-ens36  d06683d8-cf82-4acd-87c8-7175eefc7d46  ethernet  ens36
+lo             ec0339ff-f3a3-494b-b845-ab1fa90e2e3b  loopback  lo
+
