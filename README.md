@@ -184,4 +184,64 @@ MiB Swap:   4096.0 total,   4096.0 free,      0.0 used.   4384.3 avail Mem
 
 
 ---
+Here's the section that you can add to your **README** for Step 7 (Networking), covering SSH configuration and verification on port 2222:
 
+---
+
+### **Step 6: Networking**
+
+**Objective**  
+The objective of this step is to configure networking on the system, set a static IP, and secure the SSH service by changing the default port and disabling root login.
+
+---
+
+#### **SSH Configuration (Port 2222)**
+
+To enhance security, the default SSH port (22) has been changed to port 2222. Additionally, root login via SSH has been disabled to prevent unauthorized access.
+
+##### **Steps Taken:**
+1. **SSH Configuration**:  
+   The configuration file `/etc/ssh/sshd_config` was updated to:
+   ```bash
+   Port 2222
+   PermitRootLogin no
+   PasswordAuthentication yes
+   PubkeyAuthentication yes
+   ```
+   This ensures SSH runs on port 2222, disallows root login, and enables secure password and public key authentication.
+
+2. **Restarting SSH Service**:  
+   After making changes, the SSH service was restarted with the following command:
+   ```bash
+   sudo systemctl restart sshd
+   ```
+
+3. **Testing SSH Login**:  
+   To test the new SSH configuration, a login attempt was made using port 2222:
+   ```bash
+   ssh -p 2222 user@<server-ip>
+   ```
+
+4. **Log Verification**:  
+   The successful login attempt was captured in the system's security log (`/var/log/secure`) and filtered using:
+   ```bash
+   sudo grep "port 2222" /var/log/secure
+   ```
+
+##### **Log Output Example**:
+A successful SSH login entry looks like this:
+```
+Jan 14 12:34:56 hostname sshd[12345]: Accepted password for user from 192.168.1.50 port 2222 ssh2
+```
+
+The log has been saved in the project repository for verification purposes.
+
+---
+
+#### **Files and Logs**
+- **SSH Configuration File**: `/etc/ssh/sshd_config`
+- **Log File**: `logs/step7_ssh.log`
+
+This file contains the logs of successful SSH login attempts via port 2222.
+
+---

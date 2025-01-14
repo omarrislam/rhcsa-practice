@@ -1,0 +1,27 @@
+nmcli 
+ens33: connected to ens33
+        "Intel 82545EM"
+        ethernet (e1000), 00:0C:29:DC:0A:32, hw, mtu 1500
+        ip4 default
+        inet4 192.168.126.128/24
+        route4 192.168.126.0/24 metric 100
+        route4 default via 192.168.126.2 metric 100
+        inet6 fe80::20c:29ff:fedc:a32/64
+        route6 fe80::/64 metric 1024
+
+ens36: connected to static1-ens36
+        "Intel 82545EM"
+        ethernet (e1000), 00:0C:29:DC:0A:3C, hw, mtu 1500
+        inet4 192.168.1.55/24
+        route4 192.168.1.0/24 metric 101
+        route4 default via 192.168.1.1 metric 101
+        inet6 fe80::589b:88de:b2b9:cc43/64
+        route6 fe80::/64 metric 1024
+
+lo: connected (externally) to lo
+        "lo"
+        loopback (unknown), 00:00:00:00:00:00, sw, mtu 65536
+        inet4 127.0.0.1/8
+        inet6 ::1/128
+        route6 ::1/128 metric 256
+
