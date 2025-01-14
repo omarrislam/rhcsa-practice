@@ -181,14 +181,9 @@ Tasks: 149 total,   1 running, 148 sleeping,   0 stopped,   0 zombie
 MiB Mem :   8096.8 total,   2052.6 free,   3257.6 used,   2786.6 buff/cache
 MiB Swap:   4096.0 total,   4096.0 free,      0.0 used.   4384.3 avail Mem
 ```
-
-
----
-Here's the section that you can add to your **README** for Step 7 (Networking), covering SSH configuration and verification on port 2222:
-
 ---
 
-### **Step 6: Networking**
+# **Step 6: Networking**
 
 **Objective**  
 The objective of this step is to configure networking on the system, set a static IP, and secure the SSH service by changing the default port and disabling root login.
