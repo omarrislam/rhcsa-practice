@@ -240,11 +240,7 @@ The log has been saved in the project repository for verification purposes.
 This file contains the logs of successful SSH login attempts via port 2222.
 
 ---
-Here’s the **README.md** content for **Step 8** that you can add to your project:
 
----
-
-```markdown
 # Step 7: System Logs and Troubleshooting
 
 ## Objective
@@ -269,7 +265,6 @@ To ensure system logs do not grow indefinitely, we configured log rotation for t
       notifempty
       create 0640 root utmp
   }
-  ```
 
 ### 2. Log Analysis:
 We analyzed system logs using the `journalctl` command, focusing on security-related logs, especially SSH logs. We also explored logs to identify and troubleshoot failed services.
