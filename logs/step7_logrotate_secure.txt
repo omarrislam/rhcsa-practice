@@ -1,0 +1,14 @@
+### **2. Log Rotation Configuration File**
+
+#- **File Name**: `/etc/logrotate.d/secure`
+
+/var/log/secure {
+    weekly
+    rotate 4
+    compress
+    delaycompress
+    missingok
+    notifempty
+    create 0640 root utmp
+}
+

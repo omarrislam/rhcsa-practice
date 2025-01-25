@@ -240,3 +240,91 @@ The log has been saved in the project repository for verification purposes.
 This file contains the logs of successful SSH login attempts via port 2222.
 
 ---
+Here’s the **README.md** content for **Step 8** that you can add to your project:
+
+---
+
+```markdown
+# Step 7: System Logs and Troubleshooting
+
+## Objective
+In this step, we focused on configuring and analyzing system logs, setting up log rotation for system logs, and troubleshooting common system issues.
+
+## Tasks Performed
+
+### 1. Log Rotation Configuration:
+To ensure system logs do not grow indefinitely, we configured log rotation for the `/var/log/secure` file. The log rotation was configured to run weekly, keeping 4 backups, and compressing old logs.
+
+**Log Rotation Configuration:**
+
+- File: `/etc/logrotate.d/secure`
+- Content:
+  ```bash
+  /var/log/secure {
+      weekly
+      rotate 4
+      compress
+      delaycompress
+      missingok
+      notifempty
+      create 0640 root utmp
+  }
+  ```
+
+### 2. Log Analysis:
+We analyzed system logs using the `journalctl` command, focusing on security-related logs, especially SSH logs. We also explored logs to identify and troubleshoot failed services.
+
+- **Command used to check system logs**:
+  ```bash
+  journalctl -xe
+  ```
+
+- **SSH log example**:
+  ```text
+  Jan 25 14:23:45 hostname sshd[2345]: Accepted password for user from 192.168.1.50 port 2222 ssh2
+  Jan 25 14:24:03 hostname sshd[2389]: Disconnected from user@192.168.1.50 port 2222
+  ```
+
+- **Checking for failed services**:
+  We used the following command to check for failed services on the system:
+  ```bash
+  sudo systemctl status httpd
+  ```
+
+  The `httpd` service was found to have failed, and we resolved the issue by modifying its configuration.
+
+### 3. Troubleshooting:
+We used the `systemctl status` command to troubleshoot a failed service (in this case, the `httpd` service). Additionally, we checked for any other services that might have failed using the `systemctl --failed` command.
+
+## Deliverables
+
+### 1. Log Rotation Configuration:
+- **File**: `/etc/logrotate.d/secure`
+- **Description**: Log rotation configuration for `/var/log/secure`.
+
+### 2. Log Files:
+- **File**: `logs/step8_journalctl.log`
+  - Contains the output from `journalctl -xe` to display recent system logs.
+- **File**: `logs/step8_troubleshooting.log`
+  - Contains the output from `systemctl status httpd` to show the status of the `httpd` service.
+
+### 3. Log Analysis Script:
+- **File**: `scripts/log_analysis.sh`
+  - A script to analyze system logs, check for failed services, and view SSH logs.
+
+---
+
+## Files Created
+
+- **Documentation**: `docs/step8_logs_and_troubleshooting.md`
+- **Log Files**:
+  - `logs/step8_journalctl.log`
+  - `logs/step8_troubleshooting.log`
+- **Script**: `scripts/log_analysis.sh`
+
+---
+
+This step helps in configuring the system to manage logs, prevent them from filling up the disk, and enables efficient troubleshooting by analyzing logs and diagnosing service failures.
+```
+
+---
